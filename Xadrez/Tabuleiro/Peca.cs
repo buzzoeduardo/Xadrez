@@ -16,8 +16,12 @@ namespace Tabuleiro
             Posicao = null;
             Cor = cor;
             Tab = tab;
-            QtdMovimento = 0;
-            
+            QtdMovimento = 0;            
+        }
+
+        public void IncrementarQtdMovimento()
+        {
+            QtdMovimento++;
         }
     }
 }
