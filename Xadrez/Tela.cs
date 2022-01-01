@@ -55,7 +55,7 @@ namespace Xadrez
         {
             for (int i = 0; i < tab.Linhas; i++)
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(8 - i + " ");
                 Console.ResetColor();
                 for (int x = 0; x < tab.Colunas; x++)
@@ -65,7 +65,7 @@ namespace Xadrez
                 }
                 Console.WriteLine();
             }
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("  A B C D E F G H");
             Console.ResetColor();
         }
@@ -95,7 +95,7 @@ namespace Xadrez
                 }
                 Console.WriteLine();
             }
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("  A B C D E F G H");
             Console.ResetColor();
             Console.BackgroundColor = fundoOriginal;
@@ -125,7 +125,7 @@ namespace Xadrez
                 else
                 {
                     ConsoleColor corSystem = Console.ForegroundColor;
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
                     Console.Write(peca);
                     Console.ForegroundColor = corSystem;
                 }
