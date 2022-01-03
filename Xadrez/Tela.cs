@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Tabuleiro;
 using JogoXadrez;
 
@@ -37,7 +36,7 @@ namespace Xadrez
             Console.Write("Brancas: ");
             ImprimirConjunto(partida.PecasCapturadas(Cor.Branca));            
             Console.Write("Pretas: ");
-            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.Blue;
             ImprimirConjunto(partida.PecasCapturadas(Cor.Preta));
             Console.ResetColor();
         }
@@ -60,7 +59,7 @@ namespace Xadrez
                 Console.ResetColor();
                 for (int x = 0; x < tab.Colunas; x++)
                 {
-                    ImprimirPeca(tab.peca(i, x));
+                    ImprimirPeca(tab.pec(i, x));
 
                 }
                 Console.WriteLine();
@@ -89,7 +88,7 @@ namespace Xadrez
                     {
                         Console.BackgroundColor = fundoOriginal;
                     }
-                    ImprimirPeca(tab.peca(i, x));
+                    ImprimirPeca(tab.pec(i, x));
                     Console.BackgroundColor = fundoOriginal;
 
                 }

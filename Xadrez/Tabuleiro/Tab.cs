@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Tabuleiro
-{
+﻿namespace Tabuleiro{
     class Tab
     {
         public int Linhas { get; set; }
@@ -17,20 +12,21 @@ namespace Tabuleiro
             pecas = new Peca[linhas, colunas];
         }
 
-        public Peca peca(int linha, int coluna)
+        public Peca pec(int linha, int coluna)
         {
             return pecas[linha, coluna];
         }
 
-        public Peca peca(Posicao pos)
+        public Peca Peca(Posicao pos)
         {
             return pecas[pos.Linha, pos.Coluna];
+           
         }
 
         public bool ExistePeca(Posicao pos)
         {
             ValidarPosicao(pos);
-            return peca(pos) != null;
+            return Peca(pos) != null;
         }
 
         public void colocarPeca(Peca p, Posicao pos)
@@ -45,11 +41,11 @@ namespace Tabuleiro
 
         public Peca retirarPeca(Posicao pos)
         {
-            if (peca(pos) == null)
+            if (Peca(pos) == null)
             {
                 return null;
             }
-            Peca aux = peca(pos);
+            Peca aux = Peca(pos);
             aux.Posicao = null;
             pecas[pos.Linha, pos.Coluna] = null;
             return aux;

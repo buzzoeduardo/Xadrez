@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Tabuleiro;
 
 namespace JogoXadrez
@@ -145,6 +144,51 @@ namespace JogoXadrez
                 throw new TabuleiroException("Você não pode se colocar em Xeque!");
             }
 
+            Peca pec = tab.Peca(destino);
+            /*
+           //#jogada especial promocao
+            if (p is Peao)
+            {
+                if ((p.Cor == Cor.Branca && destino.Linha == 0) || (p.Cor == Cor.Preta && destino.Linha == 7))
+                {
+                    p = tab.retirarPeca(destino);
+                    pecas.Remove(p);
+                    Console.WriteLine();
+                    Console.WriteLine("PROMOÇÃO! Escolha uma peça para substituir o Peão.");
+                    Console.WriteLine("Torre(T)");
+                    Console.WriteLine("Cavalo(C)");
+                    Console.WriteLine("Bispo(P)");
+                    Console.WriteLine("Dana(D)");
+                    Console.WriteLine();
+                    char prom = char.Parse(Console.ReadLine());
+                    if (prom == 'd')
+                    {
+                        Peca dama = new Dama(tab, p.Cor);
+                        tab.colocarPeca(dama, destino);
+                        pecas.Add(dama);
+                    }
+                    else if (prom == 't')
+                    {
+                        Peca torre = new Torre(tab, p.Cor);
+                        tab.colocarPeca(torre, destino);
+                        pecas.Add(torre);
+                    }
+                    else if (prom == 'c')
+                    {
+                        Peca cavalo = new Cavalo(tab, p.Cor);
+                        tab.colocarPeca(cavalo, destino);
+                        pecas.Add(cavalo);
+                    }
+                    else
+                    {
+                        Peca bispo = new Bispo(tab, p.Cor);
+                        tab.colocarPeca(bispo, destino);
+                        pecas.Add(bispo);
+                    }
+                }
+            }
+            */
+           
             if (EstaEmXeque(Adversaria(jogadorAtual)))
             {
                 Xeque = true;
@@ -164,12 +208,10 @@ namespace JogoXadrez
                 MudaJogador();
             }
 
-            Peca p = tab.peca(destino);
-
             //#jogada especial enpassant
-            if (p is Peao && (destino.Linha == origem.Linha - 2 || destino.Linha == origem.Linha + 2))
+            if (pec is Peao && (destino.Linha == origem.Linha - 2 || destino.Linha == origem.Linha + 2))
             {
-                VulneravelEnPassant = p;
+                VulneravelEnPassant = pec;
             }
             else
             {
@@ -180,15 +222,15 @@ namespace JogoXadrez
 
         public void ValidarPosicaoOrigem(Posicao pos)
         {
-            if (tab.peca(pos) == null)
+            if (tab.Peca(pos) == null)
             {
                 throw new TabuleiroException("Não existe peça na posição de origem escolhida!");
             }
-            if (jogadorAtual != tab.peca(pos).Cor)
+            if (jogadorAtual != tab.Peca(pos).Cor)
             {
                 throw new TabuleiroException("A peça de origem escolhida não é sua!");
             }
-            if (!tab.peca(pos).ExisteMovimentosPossiveis())
+            if (!tab.Peca(pos).ExisteMovimentosPossiveis())
             {
                 throw new TabuleiroException("Não há movimentos possíveis para a peça de origem escolhida!");
             }
@@ -196,7 +238,7 @@ namespace JogoXadrez
 
         public void ValidarPosicaoDestino(Posicao origem, Posicao destino)
         {
-            if (!tab.peca(origem).MovimentoPossivel(destino))
+            if (!tab.Peca(origem).movimentoPossivel(destino))
             {
                 throw new TabuleiroException("Posição de destino inválida!");
             }
@@ -267,15 +309,15 @@ namespace JogoXadrez
 
         public bool EstaEmXeque(Cor cor)
         {
-            Peca r = Rei(cor);
-            if (r == null)
+            Peca R = Rei(cor);
+            if (R == null)
             {
                 throw new TabuleiroException("Não tem Rei da cor " + cor + " no tabuleiro");
             }
             foreach (Peca x in PecasEmJogo(Adversaria(cor)))
             {
                 bool[,] mat = x.MovimentoPossiveis();
-                if (mat[r.Posicao.Linha, r.Posicao.Coluna])
+                if (mat[R.Posicao.Linha, R.Posicao.Coluna])
                 {
                     return true;
                 }

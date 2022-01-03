@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Tabuleiro;
+﻿using Tabuleiro;
 
 namespace JogoXadrez
 {
     class Torre : Peca
     {
-        public Torre(Tab tab, Cor cor) : base(cor, tab)
+        public Torre(Tab tab, Cor cor) : base(tab, cor)
         {
         }
 
@@ -18,7 +15,7 @@ namespace JogoXadrez
 
         private bool PodeMover(Posicao pos)
         {
-            Peca p = Tab.peca(pos);
+            Peca p = Tab.Peca(pos);
             return p == null || p.Cor != Cor;
         }
 
@@ -34,7 +31,7 @@ namespace JogoXadrez
             while (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 matriz[pos.Linha, pos.Coluna] = true;
-                if (Tab.peca(pos) != null && Tab.peca(pos).Cor != Cor)
+                if (Tab.Peca(pos) != null && Tab.Peca(pos).Cor != Cor)
                 {
                     break;
                 }
@@ -47,7 +44,7 @@ namespace JogoXadrez
             while (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 matriz[pos.Linha, pos.Coluna] = true;
-                if (Tab.peca(pos) != null && Tab.peca(pos).Cor != Cor)
+                if (Tab.Peca(pos) != null && Tab.Peca(pos).Cor != Cor)
                 {
                     break;
                 }
@@ -60,7 +57,7 @@ namespace JogoXadrez
             while (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 matriz[pos.Linha, pos.Coluna] = true;
-                if (Tab.peca(pos) != null && Tab.peca(pos).Cor != Cor)
+                if (Tab.Peca(pos) != null && Tab.Peca(pos).Cor != Cor)
                 {
                     break;
                 }
@@ -73,7 +70,7 @@ namespace JogoXadrez
             while (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 matriz[pos.Linha, pos.Coluna] = true;
-                if (Tab.peca(pos) != null && Tab.peca(pos).Cor != Cor)
+                if (Tab.Peca(pos) != null && Tab.Peca(pos).Cor != Cor)
                 {
                     break;
                 }

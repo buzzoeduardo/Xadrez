@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Tabuleiro;
+﻿using Tabuleiro;
 
 namespace JogoXadrez
 {
     class Cavalo : Peca
     {
-        public Cavalo(Tab tab, Cor cor) : base(cor, tab)
+        public Cavalo(Tab tab, Cor cor) : base(tab, cor)
         {
         }
 
@@ -18,7 +15,7 @@ namespace JogoXadrez
 
         private bool PodeMover(Posicao pos)
         {
-            Peca p = Tab.peca(pos);
+            Peca p = Tab.Peca(pos);
             return p == null || p.Cor != Cor;
         }
 
