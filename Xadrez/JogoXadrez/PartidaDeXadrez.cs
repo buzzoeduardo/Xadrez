@@ -145,14 +145,15 @@ namespace JogoXadrez
             }
 
             Peca pec = tab.Peca(destino);
-            /*
+            
            //#jogada especial promocao
-            if (p is Peao)
+            if (pec is Peao)
             {
-                if ((p.Cor == Cor.Branca && destino.Linha == 0) || (p.Cor == Cor.Preta && destino.Linha == 7))
+                if ((pec.Cor == Cor.Branca && destino.Linha == 0) 
+                    || (pec.Cor == Cor.Preta && destino.Linha == 7))
                 {
-                    p = tab.retirarPeca(destino);
-                    pecas.Remove(p);
+                    pec = tab.retirarPeca(destino);
+                    pecas.Remove(pec);
                     Console.WriteLine();
                     Console.WriteLine("PROMOÇÃO! Escolha uma peça para substituir o Peão.");
                     Console.WriteLine("Torre(T)");
@@ -163,31 +164,31 @@ namespace JogoXadrez
                     char prom = char.Parse(Console.ReadLine());
                     if (prom == 'd')
                     {
-                        Peca dama = new Dama(tab, p.Cor);
+                        Peca dama = new Dama(tab, pec.Cor);
                         tab.colocarPeca(dama, destino);
                         pecas.Add(dama);
                     }
                     else if (prom == 't')
                     {
-                        Peca torre = new Torre(tab, p.Cor);
+                        Peca torre = new Torre(tab, pec.Cor);
                         tab.colocarPeca(torre, destino);
                         pecas.Add(torre);
                     }
                     else if (prom == 'c')
                     {
-                        Peca cavalo = new Cavalo(tab, p.Cor);
+                        Peca cavalo = new Cavalo(tab, pec.Cor);
                         tab.colocarPeca(cavalo, destino);
                         pecas.Add(cavalo);
                     }
                     else
                     {
-                        Peca bispo = new Bispo(tab, p.Cor);
+                        Peca bispo = new Bispo(tab, pec.Cor);
                         tab.colocarPeca(bispo, destino);
                         pecas.Add(bispo);
                     }
                 }
             }
-            */
+            
            
             if (EstaEmXeque(Adversaria(jogadorAtual)))
             {
